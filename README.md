@@ -82,22 +82,21 @@ Create `pi-context-scribe.json` in Pi's agent directory, normally
 For a project-specific choice, use `.pi/pi-context-scribe.json` in Pi's
 working directory; it is read only after the project is trusted.
 
-The only required setting is the model list:
+The only required setting is the model list. This example uses OpenAI:
 
 ```json
 {
   "models": [
-    "my-provider/preferred-model",
-    "another-provider/fallback-model"
+    "openai/gpt-6-luna"
   ]
 }
 ```
 
-The first entry is your preferred model; the second is a fallback.
-Replace both with `provider/modelId` values registered in your Pi
-installation. Use `pi --list-models` to find available IDs. Endpoints,
-credentials and provider-specific settings belong in Pi's configuration,
-not this file. See [Configuration](#configuration) for fallbacks, thinking
+OpenAI must already be configured in Pi, and your account must have
+access to this model. For another model or provider, use a
+`provider/modelId` from `pi --list-models`. Endpoints, credentials and
+provider-specific settings belong in Pi's configuration, not this file.
+See [Configuration](#configuration) for model order, fallbacks, thinking
 and request timeouts.
 
 Run **`/reload`**, then **`/context-scribe`**. The arrow should mark your
